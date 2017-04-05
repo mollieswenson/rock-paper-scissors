@@ -1,0 +1,95 @@
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+
+function start(userHand) {
+
+    $("#player").text("You play " + userHand + ".");
+    var plays = ["rock",  
+              "paper",
+              "scissors"];
+    var index = Math.floor(Math.random() * (plays.length));
+	var computerHand = plays[index];
+	$("#computer").text("Computer plays " + computerHand + ".");
+	
+	var winner;
+	
+	switch(userHand) {   
+	
+	    case computerHand:
+	        $("#text1").text("It's a tie!");
+			break;
+			
+		case "rock":
+			switch(computerHand) {
+			    case "scissors":
+				    winner = "Player";
+				    result(winner);
+					break;	
+			    case "paper":
+			        winner = "Computer";
+				    result(winner);
+				    break;	
+			}
+			break;
+			
+		case "paper":
+			switch(computerHand) {
+			    case "rock":
+			        winner = "Player";
+				    result(winner);
+					break;	
+			    case "scissors":
+			        winner = "Computer";
+				    result(winner);
+				    break;		
+			}
+			break;
+			
+		case "scissors":
+			switch(computerHand) {
+			    case "paper":
+			        winner = "Player";
+				    result(winner);
+					break;	
+			    case "rock":
+			        winner = "Computer";
+				    result(winner);
+					break;	
+			}
+			break;			
+		default:
+			$("#text1").text("fail!"); 
+	}
+}
+
+function result(winner) {
+	$("#wins").text( winner + " wins!"); 
+}
+
+
+
+
+</script>
+
+</head>
+
+<body>
+
+<p id="player"></p>
+<p id="computer"></p>
+<p id="wins">Hi, let's play a game.</p>
+
+<button id="buttonRock" onClick="start('rock')">Rock</button>
+<button id="buttonPaper" onClick="start('paper')">Paper</button>
+<button id="buttonScissors" onClick="start('scissors')">Scissors</button>
+
+
+
+</body>
+
+</html>
